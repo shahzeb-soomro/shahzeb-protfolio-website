@@ -1,0 +1,58 @@
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <h2>Experience</h2>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let exp of experiences; let i = index" 
+           [ngClass]="{'right': i % 2 === 0, 'left': i % 2 !== 0, 'current': exp.current}">
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3 class="company">{{ exp.company }}</h3>
+            <span class="period">{{ exp.period }}</span>
+          </div>
+          <h4 class="position">{{ exp.position }}</h4>
+          <p class="description">{{ exp.description }}</p>
+          <div class="tech-stack">
+            <span class="tech-badge" *ngFor="let tech of exp.tech">
+              <!-- Programming Languages -->
+              <i class="fas fa-code" *ngIf="tech.includes('JavaScript') || tech.includes('TypeScript') || tech.includes('jQuery') || tech.includes('PHP')"></i>
+              
+              <!-- Databases -->
+              <i class="fas fa-database" *ngIf="tech.includes('MongoDB') || tech.includes('MySQL')"></i>
+              
+              <!-- Frameworks -->
+              <i class="fab fa-angular" *ngIf="tech.includes('Angular')"></i>
+              <i class="fab fa-node-js" *ngIf="tech.includes('Node.js') || tech.includes('Express') || tech.includes('NestJS')"></i>
+              <i class="fab fa-html5" *ngIf="tech.includes('HTML')"></i>
+              <i class="fab fa-css3-alt" *ngIf="tech.includes('CSS')"></i>
+              <i class="fab fa-php" *ngIf="tech.includes('PHP')"></i>
+              
+              <!-- Development concepts -->
+              <i class="fas fa-project-diagram" *ngIf="tech.includes('Project')"></i>
+              <i class="fas fa-cogs" *ngIf="tech.includes('Engineering') || tech.includes('Development')"></i>
+              <i class="fas fa-code-branch" *ngIf="tech.includes('Redux')"></i>
+              <i class="fas fa-graduation-cap" *ngIf="tech.includes('Software')"></i>
+              <i class="fas fa-sitemap" *ngIf="tech.includes('Web Development')"></i>
+              
+              <!-- Default icon for anything else -->
+              <i class="fas fa-tools" *ngIf="!tech.includes('JavaScript') && !tech.includes('TypeScript') && 
+                                              !tech.includes('MongoDB') && !tech.includes('MySQL') && 
+                                              !tech.includes('Angular') && !tech.includes('Node.js') && 
+                                              !tech.includes('Express') && !tech.includes('NestJS') && 
+                                              !tech.includes('HTML') && !tech.includes('CSS') && 
+                                              !tech.includes('Project') && !tech.includes('Engineering') && 
+                                              !tech.includes('Redux') && !tech.includes('jQuery') && 
+                                              !tech.includes('PHP') && !tech.includes('Development') &&
+                                              !tech.includes('Software') && !tech.includes('Web Development')"></i>
+                                              
+              {{ tech }}
+            </span>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

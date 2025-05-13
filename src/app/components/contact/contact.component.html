@@ -1,0 +1,88 @@
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2>Contact Me</h2>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Let's Connect</h3>
+        <p>
+          I'm always open to discussing new projects, opportunities, or partnerships.
+          Feel free to reach out through the form or connect with me directly through social media.
+        </p>
+        
+        <div class="contact-socials">
+          <a *ngFor="let social of socials" [href]="social.link" target="_blank" rel="noopener" class="social-link">
+            <div class="social-icon">
+              <i [class]="social.icon"></i>
+            </div>
+            <span>{{ social.name }}</span>
+          </a>
+        </div>
+        
+        <div class="resume-download">
+          <a href="assets/Shahzeb-Baig-Updated-CV.pdf" download class="btn">
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name" 
+              class="form-control" 
+              [ngClass]="{'invalid': submitted && f['name'].errors}">
+            <div class="error-message" *ngIf="submitted && f['name'].errors">
+              <span *ngIf="f['name'].errors['required']">Name is required</span>
+              <span *ngIf="f['name'].errors['minlength']">Name must be at least 2 characters</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email" 
+              class="form-control"
+              [ngClass]="{'invalid': submitted && f['email'].errors}">
+            <div class="error-message" *ngIf="submitted && f['email'].errors">
+              <span *ngIf="f['email'].errors['required']">Email is required</span>
+              <span *ngIf="f['email'].errors['email']">Please enter a valid email</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea 
+              id="message" 
+              formControlName="message" 
+              class="form-control"
+              rows="5"
+              [ngClass]="{'invalid': submitted && f['message'].errors}"></textarea>
+            <div class="error-message" *ngIf="submitted && f['message'].errors">
+              <span *ngIf="f['message'].errors['required']">Message is required</span>
+              <span *ngIf="f['message'].errors['minlength']">Message must be at least 10 characters</span>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn submit-btn">
+            <span *ngIf="!submitted">Send Message</span>
+            <span *ngIf="submitted && !formSuccess"><i class="fas fa-spinner fa-spin"></i> Sending...</span>
+            <span *ngIf="submitted && formSuccess"><i class="fas fa-check"></i> Sent!</span>
+          </button>
+          
+          <div class="success-message" *ngIf="formSuccess">
+            Thank you for your message! I'll get back to you as soon as possible.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

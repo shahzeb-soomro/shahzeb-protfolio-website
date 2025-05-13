@@ -1,0 +1,44 @@
+<header [ngClass]="{'scrolled': isScrolled}">
+  <div class="container">
+    <div class="header-content">
+      <!-- <div class="logo">
+        <a href="#" (click)="scrollToSection('home'); $event.preventDefault()">
+          <span class="logo-text"><span class="accent">SBS</span></span>
+        </a>
+      </div> -->
+      
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="#home" [ngClass]="{'active': activeSection === 'home'}" (click)="scrollToSection('home'); $event.preventDefault()">Home</a></li>
+          <li><a href="#about" [ngClass]="{'active': activeSection === 'about'}" (click)="scrollToSection('about'); $event.preventDefault()">About</a></li>
+          <li><a href="#experience" [ngClass]="{'active': activeSection === 'experience'}" (click)="scrollToSection('experience'); $event.preventDefault()">Experience</a></li>
+          <li><a href="#skills" [ngClass]="{'active': activeSection === 'skills'}" (click)="scrollToSection('skills'); $event.preventDefault()">Skills</a></li>
+          <li><a href="#projects" [ngClass]="{'active': activeSection === 'projects'}" (click)="scrollToSection('projects'); $event.preventDefault()">Projects</a></li>
+          <li><a href="#contact" [ngClass]="{'active': activeSection === 'contact'}" (click)="scrollToSection('contact'); $event.preventDefault()">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="right-controls">
+        <button class="theme-toggle" (click)="toggleTheme()">
+          <i class="fas" [ngClass]="themeService.isDarkTheme() ? 'fa-sun' : 'fa-moon'"></i>
+        </button>
+        
+        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+          <span [ngClass]="{'open': isMobileMenuOpen}"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" [ngClass]="{'open': isMobileMenuOpen}">
+    <ul>
+      <li><a href="#home" [ngClass]="{'active': activeSection === 'home'}" (click)="scrollToSection('home'); $event.preventDefault()">Home</a></li>
+      <li><a href="#about" [ngClass]="{'active': activeSection === 'about'}" (click)="scrollToSection('about'); $event.preventDefault()">About</a></li>
+      <li><a href="#experience" [ngClass]="{'active': activeSection === 'experience'}" (click)="scrollToSection('experience'); $event.preventDefault()">Experience</a></li>
+      <li><a href="#skills" [ngClass]="{'active': activeSection === 'skills'}" (click)="scrollToSection('skills'); $event.preventDefault()">Skills</a></li>
+      <li><a href="#projects" [ngClass]="{'active': activeSection === 'projects'}" (click)="scrollToSection('projects'); $event.preventDefault()">Projects</a></li>
+      <li><a href="#contact" [ngClass]="{'active': activeSection === 'contact'}" (click)="scrollToSection('contact'); $event.preventDefault()">Contact</a></li>
+    </ul>
+  </div>
+</header>

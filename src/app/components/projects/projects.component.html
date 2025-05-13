@@ -1,0 +1,39 @@
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2>Projects</h2>
+    </div>
+    
+    <div class="filter-tags">
+      <button 
+        class="tag" 
+        *ngFor="let tag of tags" 
+        [ngClass]="{'active': activeTag === tag}"
+        (click)="filterProjects(tag)">
+        {{ tag }}
+      </button>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of filteredProjects">
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <div class="project-role">{{ project.role }}</div>
+          
+          <p class="project-description">{{ project.description }}</p>
+          
+          <div class="project-tech">
+            <span *ngFor="let tech of project.tech">{{ tech }}</span>
+          </div>
+          
+          <!-- <div class="project-tags">
+            <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+          </div> -->
+          
+          <div class="project-link" *ngIf="project.link">
+            <a [href]="project.link" target="_blank" rel="noopener">Visit Project <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

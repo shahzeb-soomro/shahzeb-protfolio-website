@@ -1,0 +1,228 @@
+.experience {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: var(--timeline-bg);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 0 var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-content {
+  padding: var(--spacing-md);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid var(--border-color);
+  z-index: 1;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-image: var(--gradient-primary);
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: var(--gradient-primary);
+  border-radius: 50%;
+  top: 30px;
+  z-index: 2;
+  box-shadow: 0 0 0 5px var(--accent-color-light), 0 0 0 8px rgba(255, 255, 255, 0.3);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 8px var(--accent-color-light), 0 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.timeline-item.left .timeline-dot {
+  right: -8px;
+}
+
+.timeline-item.right .timeline-dot {
+  left: -8px;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.company {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.period {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.position {
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.1rem;
+}
+
+.description {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--spacing-sm);
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: rgba(var(--accent-color-rgb), 0.15);
+  color: var(--text-primary);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-fast);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.3);
+  margin: 3px 0;
+}
+
+.tech-badge i {
+  margin-right: 8px;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+}
+
+.tech-badge:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item.current .timeline-content {
+  border-left: 4px solid var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 50px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-left: 100px;
+    padding-right: 0;
+  }
+  
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+  }
+  
+  .timeline-item.left .timeline-dot,
+  .timeline-item.right .timeline-dot {
+    left: 42px;
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-item {
+    padding-left: 60px;
+  }
+  
+  .timeline-item.left .timeline-dot,
+  .timeline-item.right .timeline-dot {
+    left: 22px;
+  }
+  
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .company {
+    margin-bottom: 5px;
+  }
+  
+  .tech-stack {
+    gap: 6px;
+  }
+  
+  .tech-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+  
+  .tech-badge i {
+    margin-right: 4px;
+  }
+}
